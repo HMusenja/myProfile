@@ -6,7 +6,7 @@ import "./index.css"; // Your global styles
 
 ReactDOM.createRoot(document.getElementById("root")).render(
  
-    <BrowserRouter>
+    <BrowserRouter  basename="/myProfile">
       <App />
     </BrowserRouter>
 
