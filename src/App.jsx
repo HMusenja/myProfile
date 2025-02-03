@@ -6,22 +6,22 @@ import Home from "./pages/Home";
 import About from "./pages/About";
 import Projects from "./pages/Projects";
 import Contact from "./pages/Contact";
-import Manage from "./pages/Manage"
+import Manage from "./pages/Manage";
 
 function App() {
   return (
-   
-    <Layout>
-        <Sidebar />
+    <>
+      <Layout>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/projects" element={<Projects />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/manage" element={<Manage />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/manage" element={<Manage />} />
         </Routes>
       </Layout>
-   
+    
+    </>
   );
 }
 

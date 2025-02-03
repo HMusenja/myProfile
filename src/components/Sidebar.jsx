@@ -50,7 +50,7 @@ const Sidebar = () => {
       </div>
 
       {/* Footer for Small Screens */}
-      <footer className="sm:hidden fixed bottom-0 left-0 w-full bg-emerald-950 text-white flex flex-col items-center p-4 shadow-md">
+      <footer className="sm:hidden  bottom-0 left-0 w-full bg-emerald-950 text-white flex flex-col items-center p-4 shadow-md">
         <div className="flex justify-around w-full max-w-lg">
           {/* Icon 1 - GitHub */}
           <a
