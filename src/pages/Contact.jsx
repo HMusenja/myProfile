@@ -25,7 +25,7 @@ const Contact = () => {
   return (
     <motion.section
       id="contact"
-      className="min-h-screen flex flex-col items-center justify-center bg-emerald-800 px-4 py-8 mt-8"
+      className="min-h-screen w-screen flex flex-col items-center justify-center bg-emerald-800 "
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 1 }}

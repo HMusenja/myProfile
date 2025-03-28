@@ -36,7 +36,7 @@ const Projects = () => {
   return (
     <motion.section
       id="projects"
-      className="min-h-screen flex flex-col items-center  bg-emerald-700 px-4"
+      className="min-h-screen w-screen flex flex-col items-center  bg-emerald-700 px-4"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 1 }}
