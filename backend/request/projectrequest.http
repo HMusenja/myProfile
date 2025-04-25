@@ -1,0 +1,70 @@
+
+### Register a new user
+POST http://localhost:5000/api/auth/register
+Content-Type: application/json
+
+{
+  "email": "",
+  "password": "",
+  "isAdmin": true
+}
+### Login as Admin (You need to do this before making any other requests)
+POST http://localhost:5000/api/auth/admin/login
+Content-Type: application/json
+
+{
+  "email": "youradminemail@mail.com",
+  "password": "youradminpassword"
+}
+
+###
+
+### Get All Projects
+GET http://localhost:5000/api/projects
+Content-Type: application/json
+Cookie:
+
+###
+
+###
+### Get All Projects with Pagination (10 per page)
+GET http://localhost:5000/api/projects?page=1&limit=10
+Content-Type: application/json
+Cookie: 
+
+###
+
+### Create a New Project
+POST http://localhost:5000/api/projects
+Content-Type: application/json
+Cookie:
+
+{
+  "title": "New Project",
+  "description": "Description of the new project",
+  "techStack": ["React", "Node.js", "MongoDB"],
+  "tags": ["frontend", "backend"],
+  "featured": true
+}
+
+###
+
+### Update Project (Replace `<Your_Project_ID>` with an actual ID)
+PUT http://localhost:5000/api/projects/<Your_Project_ID>
+Content-Type: application/json
+Cookie:
+
+{
+  "title": "Updated Project Title",
+  "description": "Updated description",
+  "techStack": ["React", "Express", "MongoDB"],
+  "tags": ["backend", "API"],
+  "featured": false
+}
+
+###
+
+### Delete Project (Replace `<Your_Project_ID>` with an actual ID)
+DELETE http://localhost:5000/api/projects/<Your_Project_ID>
+Content-Type: application/json
+Cookie:
