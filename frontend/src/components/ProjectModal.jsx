@@ -13,6 +13,17 @@ const ProjectModal = ({ project, onClose }) => {
 
         {/* Project Title */}
         <h2 className="text-2xl font-bold mb-4 text-center">{project.title}</h2>
+      {/* Project Image */}
+      {project.images && project.images.length > 0 && (
+  <div className="w-full flex justify-center mb-4">
+    <img
+      src={project.images[0]}
+      alt={`${project.title} screenshot`}
+      className="max-h-[400px] max-w-full object-contain rounded-md"
+    />
+  </div>
+)}
+   
 
         {/* Project Description */}
         <p className="mb-4 text-center text-gray-700">{project.description}</p>

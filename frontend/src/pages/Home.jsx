@@ -1,15 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
+import { HashLink as Link } from "react-router-hash-link";
+import { FaArrowRight } from "react-icons/fa";
 import NameSection from "../components/NameSection";
-import {
-  FaArrowRight,
-  FaFacebookF,
-  FaInstagram,
-  FaTwitter,
-  FaLinkedinIn,
-  FaYoutube,
-} from "react-icons/fa";
+import Container from "../components/Container";
 
 const Home = () => {
   const [navbarHeight, setNavbarHeight] = useState(0);
@@ -22,245 +16,103 @@ const Home = () => {
       }
     };
 
-    updateNavbarHeight(); // Get height on mount
-    window.addEventListener("resize", updateNavbarHeight); // Update on resize
-
+    updateNavbarHeight();
+    window.addEventListener("resize", updateNavbarHeight);
     return () => window.removeEventListener("resize", updateNavbarHeight);
   }, []);
 
   return (
-    <div
-      id="home"
-      className="min-h-screen flex flex-col items-center justify-center bg-emerald-950 px-4"
-      style={{
-        paddingTop: navbarHeight + "px", // Ensure homepage starts below navbar
-        scrollPaddingTop: navbarHeight + "px", // Fix scrolling offset
-      }}
-    >
-      {/* Home Section */}
-      <section className="min-h-[65vh] w-full flex flex-col items-center justify-center">
-        <motion.div
-          initial={{ opacity: 0, y: -50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1 }}
-          className="text-center"
-        >
-          {/* Main Heading */}
-          <div className="flex flex-col ">
-            <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 bg-gray-800 text-green-400 font-mono inline-block px-3 sm:px-4 py-2 rounded-lg shadow-lg">
+    <>
+      {/* 🟢 Hero Section */}
+      <section
+        id="home"
+        className="relative min-h-screen w-full overflow-x-hidden flex flex-col items-center justify-center bg-emerald-950"
+        style={{
+          paddingTop: `${navbarHeight}px`,
+          scrollPaddingTop: `${navbarHeight}px`,
+        }}
+      >
+        {/* 🔳 Background Texture */}
+        <div
+          className="absolute inset-0 z-0"
+          style={{
+            backgroundImage: "url('/myProfile/images/cubes.png')",
+            backgroundRepeat: "repeat",
+            backgroundSize: "auto",
+            opacity: 1,
+          }}
+        />
+
+        {/* 🔤 Hero Content */}
+        <Container className="relative z-10 flex flex-col items-center text-center">
+          <motion.div
+            initial={{ opacity: 0, y: -50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1 }}
+          >
+            <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 bg-gray-800 text-green-400 font-mono inline-block px-4 py-2 rounded-lg shadow-lg">
               `Hello World, It's`
             </h1>
 
-            {/* Name */}
-            <NameSection/>
-          </div>
+            <NameSection />
 
-          {/* Subtitle */}
-          <p className="text-base sm:text-xl md:text-2xl mb-16 flex flex-col items-center space-y-4 sm:space-y-0 ">
-            <span className="text-sm sm:text-xl md:text-xl font-bold bg-gray-800 text-green-400 font-mono inline-block px-3 sm:px-4 py-2 rounded-lg shadow-lg mb-4">
-              `I'm a`
-            </span>
-            <span className="text-yellow-500 text-lg sm:text-3xl md:text-4xl font-bold bg-gray-800 px-3 sm:px-4 py-2 rounded-lg shadow-lg">
-              Full-Stack Web Developer
-            </span>
-          </p>
-
-          {/* Call-to-Action Button */}
-          <motion.div
-            whileHover={{ scale: 1.1 }}
-            className="inline-block px-5 sm:px-6 py-2 sm:py-3 text-white rounded-lg text-sm sm:text-lg font-normal hover:text-yellow-600 bg-gray-800 flex items-center space-x-2"
-          >
-            <Link to="/about" className="flex items-center space-x-2">
-              <span>
-                More{" "}
-                <span className="tracking-widest text-yellow-400">about</span>{" "}
-                me
+            <p className="text-base sm:text-xl md:text-2xl my-8 flex flex-col items-center">
+              <span className="text-sm sm:text-xl font-bold bg-gray-800 text-green-400 font-mono inline-block px-4 py-2 rounded-lg shadow-lg mb-4">
+                `I'm a`
               </span>
-              <FaArrowRight className="text-yellow-400" />
-            </Link>
+              <span className="text-yellow-500 text-lg sm:text-3xl md:text-4xl font-bold bg-gray-800 px-4 py-2 rounded-lg shadow-lg">
+                Full-Stack Web Developer
+              </span>
+            </p>
+
+            <motion.div
+              whileHover={{ scale: 1.1 }}
+              className="inline-block bg-gray-800 text-white px-6 py-3 rounded-lg font-normal hover:text-yellow-600 transition"
+            >
+              <Link smooth to="/#about" className="flex items-center space-x-2">
+                <span>
+                  More <span className="tracking-widest text-yellow-400">about</span> me
+                </span>
+                <FaArrowRight className="text-yellow-400" />
+              </Link>
+            </motion.div>
           </motion.div>
-        </motion.div>
+        </Container>
       </section>
 
-      {/* Skills Section */}
-      <section className="bg-[#FAF8F6] py-16 px-6 md:px-16 w-full mt-16">
-        <div className="grid md:grid-cols-2 gap-8 items-center max-w-7xl mx-auto">
-          {/* Text Section */}
-          <div>
-            <h4 className="mb-20 font-semibold ">Skills</h4>
-            <h2 className="text-3xl font-bold text-emerald-800 leading-tight ">
-              Your Gateway to Exceptional Web Development
-            </h2>
-            <p className="text-gray-600 mt-4 text-lg">
-              With a diverse skill set in full-stack development, I create
-              dynamic and responsive single-page applications. My expertise
-              ensures that your digital experience is seamless and engaging.
-            </p>
-            <div className="mt-6 flex gap-4">
-            <button
-          className="mt-4 px-5 py-2 text-sm font-semibold bg-black text-white rounded-md transition-all duration-300 hover:bg-gray-800 hover:scale-105"
-          onClick={() => onClick(project)}
-        >
-                Explore
-              </button>
-              <button className="text-gray-900 font-semibold text-sm flex items-center hover:text-black transition">
-                Contact <span className="ml-2">&rarr;</span>
-              </button>
+      {/*  Teaser Projects Section */}
+      <section className="relative w-full bg-stone-100 border-t-4 border-yellow-400 ">
+        <Container className="py-16">
+          <div className="flex flex-col md:flex-row items-start justify-between gap-8 bg-white p-8 md:p-12 rounded-lg shadow-lg max-w-7xl mx-auto">
+            {/* Left Text */}
+            <div className="flex-1">
+              <h2 className="text-2xl font-bold text-emerald-800">
+                Explore My Creative Portfolio
+              </h2>
+              <p className="text-gray-700 text-sm md:text-base max-w-xl mx-auto leading-relaxed px-4">
+                Discover my projects and reach out for collaborations. I'm always looking for new opportunities to create innovative web solutions.
+              </p>
+            </div>
+
+            {/* CTA Buttons */}
+            <div className="flex flex-col sm:flex-row gap-4 mt-6 md:mt-0">
+              <Link
+               smooth to ="/#projects"
+                className="px-5 py-2 bg-black text-white rounded-md text-sm font-semibold hover:bg-gray-800 transition"
+              >
+                View Projects
+              </Link>
+              <Link
+                smooth to="/#message"
+                className="px-5 py-2 bg-yellow-400 text-black rounded-md text-sm font-semibold hover:bg-yellow-500 transition"
+              >
+                Contact →
+              </Link>
             </div>
           </div>
-
-          {/* Image Section */}
-          <div className="flex justify-center">
-            <img
-              src="/myProfile/images/skillsImage.jpg"
-              alt="skills"
-              className="rounded-xl shadow-lg max-w-full h-auto"
-            />
-          </div>
-        </div>
+        </Container>
       </section>
-      {/* Projects Section */}
-      <section className="bg-stone-300 text-white py-16 px-6 md:px-16 w-full  border-t-4 border-yellow-400">
-        <div className="flex flex-col m-24 bg-white text-black mt-4 mb-4 py-16 px-12 rounded-lg shadow-lg md:flex-row gap-16 items-start max-w-7xl mx-auto">
-          {/* Text Section */}
-          <div className="flex-1 ">
-            <h2 className="text-3xl text-emerald-800 font-bold leading-tight">
-              Explore My Creative Portfolio
-            </h2>
-            <p className="mt-4 text-lg">
-              Discover my projects and reach out for collaborations. I am always
-              looking for new opportunities to create innovative web solutions.
-            </p>
-          </div>
-
-          {/* Buttons Section */}
-          <div className="mt-6 flex flex-row gap-4">
-          <button
-          className="mt-4 px-5 py-2 text-sm font-semibold bg-black text-white rounded-md transition-all duration-300 hover:bg-gray-800 hover:scale-105"
-          onClick={() => onClick(project)}
-        >
-            </button>
-            <button className="text-gray-900 font-semibold text-sm flex items-center hover:text-black transition">
-              Contact <span className="ml-2">&rarr;</span>
-            </button>
-          </div>
-        </div>
-      </section>
-      {/* footer Section */}
-      <footer className=" text-white py-10 px-6 md:px-16 w-full ">
-        <div className="max-w-7xl mx-auto grid md:grid-cols-4 gap-8">
-          {/* Logo & Newsletter */}
-          
-
-          {/* Quick Links */}
-          <div className="text-white">
-            <h3 className="font-semibold mb-3 text-yellow-400">Quick Links</h3>
-            <ul className="space-y-2 text-sm">
-              <li>
-                <a
-                  href="#"
-                  className="text-white font-semithin hover:underline"
-                >
-                  Project Showcase
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:underline">
-                  My Skills
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:underline">
-                  Contact Me
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:underline">
-                  Client Reviews
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:underline">
-                  About Me
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          {/* Resources */}
-          <div>
-            <h3 className="font-semibold mb-3 text-yellow-400">Resources</h3>
-            <ul className="space-y-2 text-sm">
-              <li>
-                <a href="#" className="hover:underline">
-                  Blog Posts
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:underline">
-                  FAQs
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:underline">
-                  Portfolio
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:underline">
-                  Testimonials
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:underline">
-                  Support
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          {/* Social Media */}
-          <div>
-            <h3 className="font-semibold mb-3 text-yellow-400">
-              Connect With Us
-            </h3>
-            <div className="flex space-x-4">
-              <a href="#" className="hover:text-gray-300">
-                <FaFacebookF />
-              </a>
-              <a href="#" className="hover:text-gray-300">
-                <FaInstagram />
-              </a>
-              <a href="#" className="hover:text-gray-300">
-                <FaTwitter />
-              </a>
-              <a href="#" className="hover:text-gray-300">
-                <FaLinkedinIn />
-              </a>
-              <a href="#" className="hover:text-gray-300">
-                <FaYoutube />
-              </a>
-            </div>
-          </div>
-        </div>
-
-        {/* Bottom Section */}
-        <div className="border-t border-gray-500 mt-6 pt-4 text-center text-sm text-gray-300">
-          <p>&copy; 2025 My Portfolio. All rights reserved.</p>
-          <div className="flex justify-center space-x-4 mt-2">
-            <a href="#" className="hover:underline">
-              Privacy Policy
-            </a>
-            <a href="#" className="hover:underline">
-              Terms of Service
-            </a>
-            <a href="#" className="hover:underline">
-              Cookie Settings
-            </a>
-          </div>
-        </div>
-      </footer>
-    </div>
+    </>
   );
 };
 

@@ -4,17 +4,17 @@ POST http://localhost:5000/api/auth/register
 Content-Type: application/json
 
 {
-  "email": "",
-  "password": "",
+  "email": "admin@mail.com",
+  "password": "1234",
   "isAdmin": true
 }
 ### Login as Admin (You need to do this before making any other requests)
-POST http://localhost:5000/api/auth/admin/login
+POST http://localhost:5000/api/auth/login
 Content-Type: application/json
 
 {
-  "email": "youradminemail@mail.com",
-  "password": "youradminpassword"
+  "email": "admin@mail.com",
+  "password": "1234"
 }
 
 ###
@@ -30,7 +30,7 @@ Cookie:
 ### Get All Projects with Pagination (10 per page)
 GET http://localhost:5000/api/projects?page=1&limit=10
 Content-Type: application/json
-Cookie: 
+Cookie:jwtToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MTkwMDc1ZTRiMmNhZGRjN2IxMGFkMCIsImlhdCI6MTc0NjQ2OTM4NCwiZXhwIjoxNzQ3MDc0MTg0fQ.JkpkEVjar6ilgQTJIMTqtSZtUswZ80BL1BsJU0nGdCA; Max-Age=600; Path=/; Expires=Mon, 05 May 2025 18:33:04 GMT; HttpOnly 
 
 ###
 
@@ -41,23 +41,31 @@ Cookie:
 
 {
   "title": "New Project",
+  "intro":"",
   "description": "Description of the new project",
   "techStack": ["React", "Node.js", "MongoDB"],
   "tags": ["frontend", "backend"],
-  "featured": true
+  "featured": true,
+  "githubLink":"",
+  "liveDemoLink":"",
+   "images": [
+    ""
+  ],
+
 }
 
 ###
 
 ### Update Project (Replace `<Your_Project_ID>` with an actual ID)
-PUT http://localhost:5000/api/projects/<Your_Project_ID>
+PUT http://localhost:5000/api/projects/67e95bbfccd2111b6439afcf
 Content-Type: application/json
-Cookie:
+Cookie:jwtToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MTkwMDc1ZTRiMmNhZGRjN2IxMGFkMCIsImlhdCI6MTc0NjQ2OTM4NCwiZXhwIjoxNzQ3MDc0MTg0fQ.JkpkEVjar6ilgQTJIMTqtSZtUswZ80BL1BsJU0nGdCA; Max-Age=600; Path=/; Expires=Mon, 05 May 2025 18:33:04 GMT; HttpOnly 
+
 
 {
-  "title": "Updated Project Title",
-  "description": "Updated description",
-  "techStack": ["React", "Express", "MongoDB"],
+ "intro":"An App to assist in tracking ,finding and planning your favorite Events based on your Interest and locations",
+  "description": "Event Finder& Planner is a responsive React web app that lets users discover, view, and manage events. It integrates a third-party events API and offers calendar-based navigation, dynamic search, and local event creation—all styled with Tailwind CSS for a modern UI.",
+  
   "tags": ["backend", "API"],
   "featured": false
 }

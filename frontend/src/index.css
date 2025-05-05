@@ -2,7 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-
+html {
+  scroll-behavior: smooth;
+}
 :root {
   font-family: "Encode Sans", sans-serif;
   line-height: 1.5;
@@ -16,6 +18,11 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+ /* --navbar-height: 96px;*/
+}
+
+.section {
+  scroll-margin-top: var(--navbar-height);
 }
 
 a {
