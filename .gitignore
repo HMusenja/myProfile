@@ -1,7 +1,9 @@
 # enviroment
-.env
+frontend/.env
+backend/.env
 # manage
-request.http
+request/projectrequest.http
+request/testimonialRequest.http
 # Logs
 logs
 *.log
