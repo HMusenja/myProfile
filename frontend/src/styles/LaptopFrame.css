@@ -1,0 +1,37 @@
+.laptop-wrapper {
+    perspective: 1000px;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    transition: transform 0.4s ease;
+  }
+  
+  .laptop-wrapper:hover {
+    transform: scale(1.02) rotateX(2deg);
+  }
+  
+  .laptop-screen {
+    background: #000;
+    border: 8px solid #333;
+    border-radius: 10px 10px 0 0;
+    position: relative;
+    padding: 0.5rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    overflow: hidden;
+  }
+  
+  .project-display {
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+    display: block;
+  }
+  
+  .laptop-base {
+    background: #222;
+    height: 20px;
+    border-radius: 0 0 12px 12px;
+    margin-top: -4px;
+    box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.3);
+  }
+  

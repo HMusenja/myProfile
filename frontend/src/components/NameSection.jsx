@@ -1,14 +1,18 @@
-import { motion } from "framer-motion";
+import React, { useRef } from "react";
+import { motion, useInView } from "framer-motion";
 
 // Function to generate random values for scatter effect
 const getRandomPosition = () => ({
-  x: Math.random() * 500 - 250, // Random X offset
-  y: Math.random() * 500 - 250, // Random Y offset
-  rotate: Math.random() * 360 - 180, // Random rotation
+  x: Math.random() * 500 - 250,
+  y: Math.random() * 500 - 250,
+  rotate: Math.random() * 360 - 180,
   opacity: 0,
 });
 
 const NameSection = () => {
+  const containerRef = useRef(null);
+  const isInView = useInView(containerRef, { once: false, margin: "-100px" });
+
   const letterVariants = {
     hidden: () => getRandomPosition(),
     visible: (index) => ({
@@ -20,7 +24,7 @@ const NameSection = () => {
         type: "spring",
         stiffness: 100,
         damping: 10,
-        delay: Math.random() * 1.5, // Random delay for each letter
+        delay: Math.random() * 1.5,
       },
     }),
   };
@@ -47,17 +51,20 @@ const NameSection = () => {
   ];
 
   return (
-    <div className="flex flex-col items-center text-4xl sm:text-6xl md:text-8xl font-bold mb-10 sm:mb-16 px-6 sm:px-8 py-4 rounded-lg shadow-lg text-center leading-tight">
+    <div
+      ref={containerRef}
+      className="flex flex-col items-center text-5xl sm:text-6xl md:text-8xl font-bold mb-10 sm:mb-16 px-6 sm:px-8 py-4 rounded-lg shadow-lg text-center leading-tight"
+    >
       {/* First Name */}
-      <motion.div className="tracking-wide" initial="hidden" animate="visible">
+      <motion.div className="tracking-wide">
         {firstName.map((char, index) => (
           <motion.span
             key={index}
             className={`${char.color} inline-block`}
             variants={letterVariants}
-            custom={index}
             initial="hidden"
-            animate="visible"
+            animate={isInView ? "visible" : "hidden"}
+            custom={index}
           >
             {char.letter}
           </motion.span>
@@ -65,15 +72,15 @@ const NameSection = () => {
       </motion.div>
 
       {/* Last Name */}
-      <motion.div className="tracking-wide mt-4" initial="hidden" animate="visible">
+      <motion.div className="tracking-wide mt-4">
         {lastName.map((char, index) => (
           <motion.span
             key={index}
             className={`${char.color} inline-block`}
             variants={letterVariants}
-            custom={index + 8}
             initial="hidden"
-            animate="visible"
+            animate={isInView ? "visible" : "hidden"}
+            custom={index + 8}
           >
             {char.letter}
           </motion.span>
@@ -84,5 +91,6 @@ const NameSection = () => {
 };
 
 export default NameSection;
+
 
 

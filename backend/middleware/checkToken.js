@@ -3,7 +3,7 @@ import createError from "http-errors";
 import UserModel from "../models/userModel.js";
 import "dotenv/config";
 
-const checkToken = async (req, res, next) => {
+export const checkToken = async (req, res, next) => {
   try {
     // Check if cookies exist
     // console.log("To see if its working", process.env.JWT_SECRET);
@@ -38,4 +38,12 @@ const checkToken = async (req, res, next) => {
   }
 };
 
-export default checkToken;
+export const checkRole = (role) => {
+  return (req, res, next) => {
+    if (!req.user || req.user.role !== role) {
+      return next(createError(403, "Forbidden: Insufficient permissions"));
+    }
+    next();
+  };
+};
+

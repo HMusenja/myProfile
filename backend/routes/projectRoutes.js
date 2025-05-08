@@ -1,6 +1,6 @@
 import express from 'express';
 import { getProjects, createProject, updateProject, deleteProject } from '../controllers/projectController.js';
-import checkToken from '../middleware/checkToken.js';  // Import your middleware
+import {checkToken} from '../middleware/checkToken.js';  // Import your middleware
 
 const router = express.Router();
 
