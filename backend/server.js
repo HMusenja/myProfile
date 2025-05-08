@@ -9,6 +9,7 @@ import authRoutes from "./routes/authRoutes.js";
 import uploadRoutes from "./routes/uploadRoutes.js";
 import { errorHandler, notFound } from "./middleware/errorMiddleware.js";
 import contactRoutes from './routes/contactRoutes.js';
+import testimonialRoutes from "./routes/testimonialRoutes.js";
 
 dotenv.config();
  await connectDB();
@@ -31,6 +32,7 @@ app.use("/api/projects", projectRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/api/upload", uploadRoutes);
 app.use('/api/contact', contactRoutes);
+app.use("/api/testimonials", testimonialRoutes);
 
 // Error Handling Middleware
 app.use(notFound);

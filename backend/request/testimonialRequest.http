@@ -1,0 +1,32 @@
+
+### Login as Admin (You need to do this before making any other requests)
+POST http://localhost:5000/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "admin@mail.com",
+  "password": "1234"
+}
+
+
+
+
+### Get Testimonials
+GET http://localhost:5000/api/testimonials
+
+
+
+### Create Testimonial
+POST http://localhost:5000/api/testimonials
+Content-Type: application/json
+Cookie: jwtToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MTkwMDc1ZTRiMmNhZGRjN2IxMGFkMCIsImlhdCI6MTc0NjcwNDAwNiwiZXhwIjoxNzQ3MzA4ODA2fQ.sCgq9W-uY7Y1ta7PgSzS-ntEkRBrpIUCRGhOGgStDrg; Max-Age=600; Path=/; Expires=Thu, 08 May 2025 11:43:26 GMT; HttpOnly
+
+{
+  "name": "Megan Dye",
+  "role": "Savoy Hamburg",
+  "rating":"4",
+  "gender": "male",
+  "avatar": "https://i.pravatar.cc/150?img=12",
+  "quote": "Super collaborative, responsive, and just gets it. One of the best devs to work with.",
+    "captchaToken": "test"
+}

@@ -71,7 +71,9 @@ const Home = () => {
             >
               <Link smooth to="/#about" className="flex items-center space-x-2">
                 <span>
-                  More <span className="tracking-widest text-yellow-400">about</span> me
+                  More{" "}
+                  <span className="tracking-widest text-yellow-400">about</span>{" "}
+                  me
                 </span>
                 <FaArrowRight className="text-yellow-400" />
               </Link>
@@ -90,20 +92,24 @@ const Home = () => {
                 Explore My Creative Portfolio
               </h2>
               <p className="text-gray-700 text-sm md:text-base max-w-xl mx-auto leading-relaxed px-4">
-                Discover my projects and reach out for collaborations. I'm always looking for new opportunities to create innovative web solutions.
+                Discover my projects and reach out for collaborations. I'm
+                always looking for new opportunities to create innovative web
+                solutions.
               </p>
             </div>
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 mt-6 md:mt-0">
               <Link
-               smooth to ="/#projects"
+                smooth
+                to="/#projects"
                 className="px-5 py-2 bg-black text-white rounded-md text-sm font-semibold hover:bg-gray-800 transition"
               >
                 View Projects
               </Link>
               <Link
-                smooth to="/#message"
+                smooth
+                to="/#message"
                 className="px-5 py-2 bg-yellow-400 text-black rounded-md text-sm font-semibold hover:bg-yellow-500 transition"
               >
                 Contact →

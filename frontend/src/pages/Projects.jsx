@@ -75,7 +75,7 @@ const Projects = () => {
               onClick={() => scrollToProject(index)}
               className={`px-3 py-1 rounded bg-yellow-500 text-xs md:text-sm transition ${
                 index === currentIndex
-                  ? " underline text-yellow-500 bg-gray-900"
+                  ? " underline text-blue-800 "
                   : "hover:bg-gray-200"
               }`}
             >

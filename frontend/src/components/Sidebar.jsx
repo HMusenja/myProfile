@@ -30,7 +30,7 @@ const Sidebar = () => {
 
           {/* Icon 2 - LinkedIn */}
           <a
-            href="https://www.linkedin.com/in/Humphrey-Musenja/"
+           href="https://www.linkedin.com/in/humphrey-musenja-743047345"
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-blue-500 flex flex-col items-center"

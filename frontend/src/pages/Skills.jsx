@@ -53,7 +53,7 @@ const Skills = () => {
         </div>
 
         {/* Skills Grid with Background */}
-        <div className="w-full md:w-3/4 mx-auto relative rounded-lg overflow-hidden shadow-inner px-4">
+        <div className="w-full md:w-3/4 mx-auto relative rounded-lg overflow-hidden  px-4">
           {/* Background Texture Layer */}
           <div
             className="absolute inset-4 z-0"
@@ -72,16 +72,16 @@ const Skills = () => {
               {skills.map((skill, index) => (
                 <motion.div
                   key={index}
-                  className="flex flex-col items-center justify-center bg-emerald-950 py-6 px-4 rounded-xl shadow-md hover:scale-105 transition-transform"
+                  className="flex flex-col items-center justify-center bg-emerald-950 py-4 px-8 rounded-xl shadow-md hover:scale-105 transition-transform"
                   initial={{ opacity: 0, scale: 0.8 }}
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                 >
-                  <div className="text-3xl sm:text-4xl md:text-5xl">
+                  <div className="text-2xl sm:text-3xl md:text-4xl">
                     {skill.icon}
                   </div>
-                  <p className="mt-3 text-base font-semibold text-stone-100">
+                  <p className=" text-base  text-stone-100">
                     {skill.label}
                   </p>
                 </motion.div>

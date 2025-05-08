@@ -3,6 +3,9 @@ import Container from "../components/Container";
 import { motion } from "framer-motion";
 import { FaLinkedin, FaEnvelope, FaPhoneAlt } from "react-icons/fa";
 import { useNavbarHeight } from "../context/NavbarHeightContext";
+import TestimonialForm from "../components/TestimonialForm";
+import Modal from "../components/Modal";
+
 
 const Contact = () => {
   const navbarHeight = useNavbarHeight();
@@ -14,6 +17,7 @@ const Contact = () => {
   });
   const [responseMessage, setResponseMessage] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
+  const [showTestimonialModal, setShowTestimonialModal] = useState(false);
 
   const handleChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -64,7 +68,6 @@ const Contact = () => {
 
         {/* Content Layout */}
         <div className="w-full flex flex-col lg:flex-row gap-10 items-center justify-center max-w-[1100px] mx-auto">
-
           {/* Contact Form */}
           <motion.div
             id="message"
@@ -154,7 +157,7 @@ const Contact = () => {
             </p>
             <div className="flex flex-col gap-4">
               <motion.a
-                href="https://www.linkedin.com/in/Humphrey-Musenja/"
+                href="https://www.linkedin.com/in/humphrey-musenja-743047345"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center text-white bg-blue-600 py-3 px-4 rounded-lg shadow-lg hover:bg-blue-700 transition text-sm sm:text-base"
@@ -180,8 +183,22 @@ const Contact = () => {
                 Call Me
               </motion.a>
             </div>
+            <div className="text-center mt-8">
+              <button
+                onClick={() => setShowTestimonialModal(true)}
+                className="bg-blue-600 text-white px-5 py-3 rounded-lg hover:bg-blue-700 transition"
+              >
+                Leave a Testimonial
+              </button>
+            </div>
           </motion.div>
         </div>
+        {/* Testimonial Modal */}
+        {showTestimonialModal && (
+          <Modal onClose={() => setShowTestimonialModal(false)}>
+          <TestimonialForm onSuccessClose={() => setShowTestimonialModal(false)} />
+          </Modal>
+        )}
       </Container>
     </section>
   );

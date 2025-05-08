@@ -4,48 +4,61 @@ const ProjectModal = ({ project, onClose }) => {
   if (!project) return null;
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-80 backdrop-blur-md flex justify-center items-center z-50 px-4">
-      <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg max-w-3xl w-full mx-4 relative">
+    <div className="fixed inset-0 bg-black bg-opacity-80 backdrop-blur-md flex justify-center items-center z-50 px-2 sm:px-4">
+      <div className="bg-white dark:bg-gray-800 p-4 sm:p-6 rounded-lg shadow-lg w-full max-w-3xl relative overflow-y-auto max-h-[90vh]">
         {/* Close Button */}
-        <button onClick={onClose} className="absolute top-2 right-2 text-gray-500 dark:text-gray-300 text-xl">
+        <button
+          onClick={onClose}
+          className="absolute top-2 right-2 text-gray-500 dark:text-gray-300 text-xl"
+        >
           ✖
         </button>
 
-        {/* Project Title */}
-        <h2 className="text-2xl font-bold mb-4 text-center">{project.title}</h2>
-      {/* Project Image */}
-      {project.images && project.images.length > 0 && (
-  <div className="w-full flex justify-center mb-4">
-    <img
-      src={project.images[0]}
-      alt={`${project.title} screenshot`}
-      className="max-h-[400px] max-w-full object-contain rounded-md"
-    />
-  </div>
-)}
-   
+        {/* Title */}
+        <h2 className="text-lg sm:text-2xl font-bold mb-4 text-center">
+          {project.title}
+        </h2>
 
-        {/* Project Description */}
-        <p className="mb-4 text-center text-gray-700">{project.description}</p>
+        {/* Image */}
+        {project.images?.length > 0 && (
+          <div className="w-full flex justify-center mb-4">
+            <img
+              src={project.images[0]}
+              alt={`${project.title} screenshot`}
+              className="max-h-60 sm:max-h-96 w-auto max-w-full object-contain rounded-md"
+            />
+          </div>
+        )}
 
-        {/* Collaborators Section */}
+        {/* Description */}
+        <p className="mb-4 text-center text-sm sm:text-base text-gray-700 dark:text-gray-200">
+          {project.description}
+        </p>
+
+        {/* Collaborators */}
         <div className="mb-4">
-          <h3 className="font-semibold mb-2">Collaborators:</h3>
+          <h3 className="font-semibold text-sm sm:text-base mb-2">Collaborators:</h3>
           <div className="flex flex-wrap gap-2">
             {project.collaborators.map((collaborator, index) => (
-              <span key={index} className="bg-blue-600 text-white text-sm rounded-full px-3 py-1">
+              <span
+                key={index}
+                className="bg-blue-600 text-white text-xs sm:text-sm rounded-full px-3 py-1"
+              >
                 {collaborator}
               </span>
             ))}
           </div>
         </div>
 
-        {/* Tech Stack Section */}
+        {/* Tech Stack */}
         <div className="mb-4">
-          <h3 className="font-semibold mb-2">Tech Stack:</h3>
+          <h3 className="font-semibold text-sm sm:text-base mb-2">Tech Stack:</h3>
           <div className="flex flex-wrap gap-2">
             {project.techStack.map((tech, index) => (
-              <span key={index} className="bg-gray-700 text-white text-sm rounded-full px-3 py-1">
+              <span
+                key={index}
+                className="bg-gray-700 text-white text-xs sm:text-sm rounded-full px-3 py-1"
+              >
                 {tech}
               </span>
             ))}
@@ -53,11 +66,11 @@ const ProjectModal = ({ project, onClose }) => {
         </div>
 
         {/* Links */}
-        <div className="flex flex-col items-center gap-2">
+        <div className="flex flex-col items-center gap-2 mt-4">
           {project.githubLink && (
             <a
               href={project.githubLink}
-              className="text-blue-600 hover:underline"
+              className="text-blue-600 hover:underline text-sm sm:text-base"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -67,7 +80,7 @@ const ProjectModal = ({ project, onClose }) => {
           {project.liveDemoLink && (
             <a
               href={project.liveDemoLink}
-              className="text-blue-600 hover:underline"
+              className="text-blue-600 hover:underline text-sm sm:text-base"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -81,5 +94,3 @@ const ProjectModal = ({ project, onClose }) => {
 };
 
 export default ProjectModal;
-
-
